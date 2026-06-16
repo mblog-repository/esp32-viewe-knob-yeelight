@@ -9,3 +9,14 @@ build/
 .claude/
 .vscode/
 .DS_Store
+
+# Свопы/бэкапы редакторов
+*.swp
+*.swo
+*~
+
+# СЕКРЕТЫ: Wi-Fi пароли и т.п. — НИКОГДА не коммитим.
+# В репозиторий идёт только шаблон secrets.h.example
+secrets.h
+*/secrets.h
+**/secrets.h
