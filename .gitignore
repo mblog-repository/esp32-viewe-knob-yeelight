@@ -1,0 +1,11 @@
+# Каталоги сборки Arduino CLI (создаются в <sketch>/build)
+*/build/
+build/
+
+# PlatformIO (если кто-то соберёт через него)
+.pio/
+
+# Локальные настройки редакторов / Claude Code
+.claude/
+.vscode/
+.DS_Store
