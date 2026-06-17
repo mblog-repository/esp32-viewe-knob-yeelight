@@ -131,14 +131,14 @@ uint16_t hsv565(int h, int s, int v) {
 //  Соединение и команды Yeelight
 // ======================================================================
 // Неблокирующий реконнект: при потере связи пробуем не чаще раза в RECONNECT_BACKOFF
-// и с коротким таймаутом — иначе разрыв морозил бы UI на сотни мс на каждой команде.
+// и с коротким таймаутом, чтобы не блокировать основной цикл.
 uint32_t lastConnAttempt = 0;
 const uint32_t RECONNECT_BACKOFF = 1200;
 
 bool ensureConnected() {
   if (lampClient.connected()) return true;
   uint32_t now = millis();
-  if (now - lastConnAttempt < RECONNECT_BACKOFF) return false;   // ждём — UI остаётся живым
+  if (now - lastConnAttempt < RECONNECT_BACKOFF) return false;   // ждём до следующей попытки
   lastConnAttempt = now;
   lampClient.stop();
   bool ok = lampClient.connect(lampIp.c_str(), YEE_PORT, 400);
